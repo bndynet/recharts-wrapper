@@ -1,11 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
-const app = require("./package.json");
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const CleanWebpackPlugin = require("clean-webpack-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const PrintTimeWebpackPlugin = require("print-time-webpack");
 const HeaderInjectionWebpackPlugin = require("@bndynet/header-injection-webpack-plugin");
 
 module.exports = {

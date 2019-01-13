@@ -2,20 +2,22 @@
   "name": "@bndynet/recharts-wrapper",
   "version": "1.0.0",
   "description": "A Recharts wrapper for easiler to use",
-  "main": "lib/index",
-  "typings": "lib/index.d.ts",
-  "module": "lib/es6/index",
-  "jsnext:main": "lib/es6/index",
+  "main": "lib/cjx/src/index",
+  "typings": "lib/cjx/src/index.d.ts",
+  "module": "lib/es6/src/index",
+  "jsnext:main": "lib/es6/src/index",
   "scripts": {
     "dev": "npm run tslint && webpack --mode development",
     "dev:watch": "nodemon --exec 'npm run dev || exit 1'",
     "tslint": "tslint --project .",
-    "build": "npm run clean && npm run tslint && tsc --outDir ./lib/cjx && tsc -m es6 --outDir ./lib/es6 && webpack --mode production",
+    "build": "npm run clean && npm run tslint && tsc --outDir ./lib/cjs && tsc -m es6 --outDir ./lib/es6 && webpack --mode production",
     "precommit": "lint-staged",
+    "prepublish": "npm run build",
     "clean": "shx rm -rf lib",
     "test": "jest"
   },
   "files": [
+    "*.md",
     "lib"
   ],
   "jest": {
