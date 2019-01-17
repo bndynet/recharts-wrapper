@@ -59,11 +59,11 @@
 
             ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [
                 { key: "uv", color: "#82ca9d", type: "bar" },
-                { key: "pv", color: "#8884d8", type: "area" },
+                { key: "pv", color: "#8884d8", type: "line"},
                 {
                     key: "amt",
                     color: "#ff0000",
-                    type: "line",
+                    type: "area",
                     legendIconType: "circle",
                 },
             ] }), target("chart3"));

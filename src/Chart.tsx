@@ -85,10 +85,20 @@ export class Chart extends React.Component<IChartProps, IChartState> {
   public render() {
     const { classes } = this.props;
     const height = this.props.height || 320;
+    const loadingElementStyles: React.CSSProperties = {
+      position: "absolute",
+      top: 0,
+      display: "flex",
+      alignItems: "center",
+      height,
+      width: "100%",
+      textAlign: "center",
+      backgroundColor: "rgba(255, 255, 255, .5)",
+    };
     return (
       <div
         className={classNames(classes && classes.root, this.props.className)}
-        style={{ width: this.props.width, height }}
+        style={{ position: "relative", width: this.props.width, height }}
       >
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={this.state.data}>
@@ -157,8 +167,10 @@ export class Chart extends React.Component<IChartProps, IChartState> {
           </ComposedChart>
         </ResponsiveContainer>
         {this.state.loadingDataSource && this.props.loadingElement && (
-          <div className={classes.loadingBox} style={{ height, width: "100%" }}>
-            {this.props.loadingElement}
+          <div className={classNames(classes && classes.loadingBox)} style={loadingElementStyles}>
+            <div style={{flex: 1}}>
+              {this.props.loadingElement}
+            </div>
           </div>
         )}
       </div>
