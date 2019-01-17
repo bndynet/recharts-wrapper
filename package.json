@@ -2,35 +2,83 @@
   "name": "@bndynet/recharts-wrapper",
   "version": "1.0.0",
   "description": "A Recharts wrapper for easiler to use",
-  "main": "lib/cjx/src/index",
-  "typings": "lib/cjx/src/index.d.ts",
-  "module": "lib/es6/src/index",
-  "jsnext:main": "lib/es6/src/index",
-  "scripts": {
-    "dev": "npm run tslint && webpack --mode development",
-    "dev:watch": "nodemon --exec 'npm run dev || exit 1'",
-    "tslint": "tslint --project .",
-    "build": "npm run clean && npm run tslint && tsc --outDir ./lib/cjs && tsc -m es6 --outDir ./lib/es6 && webpack --mode production",
-    "precommit": "lint-staged",
-    "prepublish": "npm run build",
-    "clean": "shx rm -rf lib",
-    "test": "jest"
-  },
+  "main": "dist/recharts-wrapper.umd.js",
+  "module": "dist/recharts-wrapper.es5.js",
+  "typings": "dist/types/recharts-wrapper.d.ts",
   "files": [
-    "*.md",
-    "lib"
+    "dist"
   ],
+  "author": "Bendy Zhang <zb@bndy.net>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "start": "rollup -c rollup.config.ts -w",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
+    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "deploy-docs": "ts-node tools/gh-pages-publish",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release",
+    "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
+    "precommit": "lint-staged",
+    "travis-deploy-once": "travis-deploy-once"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "jest": {
     "transform": {
-      "^.+\\.tsx?$": "ts-jest"
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js",
-      "jsx"
+      "js"
     ],
-    "testRegex": "^.+\\.spec\\.tsx?$"
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverageFrom": [
+      "src/*.{js,ts}"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "keywords": [
     "react",
@@ -39,15 +87,16 @@
     "react-component",
     "recharts"
   ],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@bndynet/header-injection-webpack-plugin": "^4.0.2",
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
     "@types/classnames": "^2.2.7",
     "@types/d3-shape": "^1.2.7",
     "@types/enzyme": "^3.1.15",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "^23.3.12",
+    "@types/node": "^10.11.0",
     "@types/react": "^16.7.18",
     "@types/react-test-renderer": "^16.0.3",
     "@types/recharts": "file:typings/recharts",
@@ -58,25 +107,47 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.6",
+    "colors": "^1.3.2",
+    "commitizen": "^3.0.0",
+    "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.9.0",
     "eslint-plugin-react": "^7.8.2",
     "husky": "^1.3.1",
     "jest": "^23.6.0",
+    "jest-config": "^23.6.0",
     "lint-staged": "^8.1.0",
+    "lodash.camelcase": "^4.3.0",
     "prettier": "^1.15.3",
+    "prompt": "^1.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-test-renderer": "^16.7.0",
     "recharts": "^1.4.2",
+    "replace-in-file": "^3.4.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.67.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-typescript2": "^0.18.0",
+    "semantic-release": "^15.9.16",
     "shx": "^0.3.2",
+    "travis-deploy-once": "^5.0.9",
     "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
+    "tslint-config-standard": "^8.0.1",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-loader": "^3.5.4",
     "tslint-react": "^3.6.0",
+    "typedoc": "^0.12.0",
     "typescript": "^3.2.2",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1"
@@ -91,11 +162,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }

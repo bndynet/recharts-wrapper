@@ -13,7 +13,7 @@ import {
   Area,
   IconType
 } from "recharts";
-import { ISerie } from "../typings/serie";
+import { ISerie } from "./serie";
 import { ChartLegendContent } from "./ChartLegendContent";
 
 export interface IChartProps {

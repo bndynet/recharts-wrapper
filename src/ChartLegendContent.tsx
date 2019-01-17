@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import { LegendProps, Surface, Symbols } from "recharts";
 
-import { ISerie } from "../typings/serie";
+import { ISerie } from "./serie";
 
 const ICON_SIZE = 32;
 
