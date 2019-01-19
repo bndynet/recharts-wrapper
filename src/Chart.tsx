@@ -1,7 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
 import {
-    ResponsiveContainer,
     XAxis,
     YAxis,
     CartesianGrid,
@@ -17,7 +16,11 @@ import { Serie } from "./Serie";
 import { ChartLegendContent } from "./ChartLegendContent";
 
 export interface ChartProps {
-    classes?: any;
+    classes?: {
+        root?: any;
+        loadingElement?: any;
+        legendItemInactive?: any;
+    };
     className?: string;
     data: any[];
     xKey: string;
@@ -185,7 +188,7 @@ export class Chart extends React.Component<ChartProps, ChartState> {
                 </ComposedChart>
                 {this.state.loadingDataSource && this.props.loadingElement && (
                     <div
-                        className={classNames(classes && classes.loadingBox)}
+                        className={classNames(classes && classes.loadingElement)}
                         style={loadingElementStyles}
                     >
                         <div style={{ flex: 1 }}>

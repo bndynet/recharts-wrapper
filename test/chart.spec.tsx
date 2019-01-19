@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, mount, ShallowWrapper, ReactWrapper } from "enzyme";
 import { Legend } from "recharts";
-import { Chart, ChartLegendContent, Serie } from "../src/recharts-wrapper";
+import { Chart, ChartLegendContent } from "../src/recharts-wrapper";
 import { chartData, chartSeries } from "./_data";
 
 describe("Comp: Chart", () => {
