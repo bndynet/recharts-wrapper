@@ -12,6 +12,8 @@
         "grouped-imports": false,
         "object-literal-sort-keys": false,
         "jsx-no-lambda": false,
-        "max-classes-per-file": [true, 5, "exclude-class-expressions"]
+        "max-classes-per-file": [true, 5, "exclude-class-expressions"],
+        "interface-name": [true, "never-prefix"],
+        "no-implicit-dependencies": [true, ["lib"]]
     }
 }

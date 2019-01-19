@@ -1,8 +1,0 @@
-tsconfig.json
-tslint.json
-webpack.config.js
-.prettierrc
-.babelrc
-src
-test
-typings

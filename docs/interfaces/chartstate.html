@@ -3,21 +3,21 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@bndynet/recharts-wrapper</title>
+	<title>ChartState | @bndynet/recharts-wrapper</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://static.bndy.net/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://static.bndy.net/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="https://static.bndy.net/favicon-16x16.png">
 	<link rel="mask-icon" href="https://static.bndy.net/safari-pinned-tab.svg" color="#5bbad5">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -26,7 +26,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">@bndynet/recharts-wrapper</a>
+					<a href="../index.html" class="title">@bndynet/recharts-wrapper</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -57,74 +57,118 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="chartstate.html">ChartState</a>
 				</li>
 			</ul>
-			<h1> @bndynet/recharts-wrapper</h1>
+			<h1>Interface ChartState</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="recharts-wrapper">Recharts  Wrapper</h1>
-				<p>It&#39;s just a wrapper of Recharts for easiler to code.</p>
-				<h2 id="new-features">New Features</h2>
-				<ul>
-					<li>By default, support toggling legend items for showing/hiding the series</li>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ChartState</span>
+					</li>
 				</ul>
-				<h2 id="example">Example</h2>
-				<pre><code class="language-typescript"><span class="hljs-keyword">public</span> render() {
-    <span class="hljs-keyword">const</span> data = [
-    { name: <span class="hljs-string">"Page A"</span>, uv: <span class="hljs-number">4000</span>, pv: <span class="hljs-number">2400</span>, amt: <span class="hljs-number">2400</span> },
-    { name: <span class="hljs-string">"Page B"</span>, uv: <span class="hljs-number">3000</span>, pv: <span class="hljs-number">1398</span>, amt: <span class="hljs-number">2210</span> },
-    { name: <span class="hljs-string">"Page C"</span>, uv: <span class="hljs-number">2000</span>, pv: <span class="hljs-number">9800</span>, amt: <span class="hljs-number">2290</span> },
-    { name: <span class="hljs-string">"Page D"</span>, uv: <span class="hljs-number">2780</span>, pv: <span class="hljs-number">3908</span>, amt: <span class="hljs-number">2000</span> },
-    { name: <span class="hljs-string">"Page E"</span>, uv: <span class="hljs-number">1890</span>, pv: <span class="hljs-number">4800</span>, amt: <span class="hljs-number">2181</span> },
-    { name: <span class="hljs-string">"Page F"</span>, uv: <span class="hljs-number">2390</span>, pv: <span class="hljs-number">3800</span>, amt: <span class="hljs-number">2500</span> },
-    { name: <span class="hljs-string">"Page G"</span>, uv: <span class="hljs-number">3490</span>, pv: <span class="hljs-number">4300</span>, amt: <span class="hljs-number">2100</span> }
-    ];
-
-    <span class="hljs-keyword">const</span> series: ISerie[] = [
-    { key: <span class="hljs-string">"uv"</span>, color: <span class="hljs-string">"#82ca9d"</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">"bar"</span> },
-    { key: <span class="hljs-string">"pv"</span>, color: <span class="hljs-string">"#8884d8"</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">"area"</span> },
-    { key: <span class="hljs-string">"amt"</span>, color: <span class="hljs-string">"#ff0000"</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">"line"</span>, legendIconType: <span class="hljs-string">"circle"</span> }
-    ];
-
-    <span class="hljs-keyword">return</span> (
-        &lt;Chart width={<span class="hljs-number">500</span>} height={<span class="hljs-number">500</span>} data={data} xKey=<span class="hljs-string">"name"</span> series={series} /&gt;
-    );
-}</code></pre>
-			</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="chartstate.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="chartstate.html#loadingdatasource" class="tsd-kind-icon">loading<wbr>Data<wbr>Source</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="chartstate.html#offseries" class="tsd-kind-icon">off<wbr>Series</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bndynet/recharts-wrapper/blob/b68dc05/src/Chart.tsx#L39">Chart.tsx:39</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="loadingdatasource" class="tsd-anchor"></a>
+					<h3>loading<wbr>Data<wbr>Source</h3>
+					<div class="tsd-signature tsd-kind-icon">loading<wbr>Data<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bndynet/recharts-wrapper/blob/b68dc05/src/Chart.tsx#L38">Chart.tsx:38</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="offseries" class="tsd-anchor"></a>
+					<h3>off<wbr>Series</h3>
+					<div class="tsd-signature tsd-kind-icon">off<wbr>Series<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/bndynet/recharts-wrapper/blob/b68dc05/src/Chart.tsx#L40">Chart.tsx:40</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/chart.html" class="tsd-kind-icon">Chart</a>
+						<a href="../classes/chart.html" class="tsd-kind-icon">Chart</a>
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
-						<a href="classes/chartlegendcontent.html" class="tsd-kind-icon">Chart<wbr>Legend<wbr>Content</a>
+						<a href="../classes/chartlegendcontent.html" class="tsd-kind-icon">Chart<wbr>Legend<wbr>Content</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/chartlegendcontentprops.html" class="tsd-kind-icon">Chart<wbr>Legend<wbr>Content<wbr>Props</a>
+						<a href="chartlegendcontentprops.html" class="tsd-kind-icon">Chart<wbr>Legend<wbr>Content<wbr>Props</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/chartprops.html" class="tsd-kind-icon">Chart<wbr>Props</a>
+						<a href="chartprops.html" class="tsd-kind-icon">Chart<wbr>Props</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/chartstate.html" class="tsd-kind-icon">Chart<wbr>State</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
+						<a href="chartstate.html" class="tsd-kind-icon">Chart<wbr>State</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="chartstate.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="chartstate.html#loadingdatasource" class="tsd-kind-icon">loading<wbr>Data<wbr>Source</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="chartstate.html#offseries" class="tsd-kind-icon">off<wbr>Series</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-is-external">
-						<a href="interfaces/serie.html" class="tsd-kind-icon">Serie</a>
+						<a href="serie.html" class="tsd-kind-icon">Serie</a>
 					</li>
 				</ul>
 			</nav>
@@ -195,7 +239,7 @@
 	<p>Generated by <a href="http://bndy.net/" target="_blank">BNDY-NET</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

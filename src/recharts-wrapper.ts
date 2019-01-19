@@ -1,3 +1,3 @@
-export { ISerie } from './serie'
-export * from './Chart'
-export * from './ChartLegendContent'
+export { Serie } from "./Serie";
+export * from "./Chart";
+export * from "./ChartLegendContent";
