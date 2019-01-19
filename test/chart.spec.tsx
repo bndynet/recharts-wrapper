@@ -30,10 +30,6 @@ describe("Comp: Chart", () => {
         shallowrapper = shallow(ele);
     });
 
-    it("should render a ChartLegendContent component", () => {
-        expect(mountedWrapper.find(ChartLegendContent).length).toEqual(1);
-    });
-
     it("should render the result if dataSource property specified", () => {
         setTimeout(() => {
             expect(mountedWrapper.state<any[]>("data").length).toEqual(0);
