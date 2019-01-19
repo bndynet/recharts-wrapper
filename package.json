@@ -20,7 +20,8 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && npm run docs",
+    "docs": "typedoc --theme ./node_modules/@bndynet/typedoc-default-themes/bin/default --out docs --target es6 --mode file src",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
@@ -85,6 +86,7 @@
   ],
   "devDependencies": {
     "@bndynet/header-injection-webpack-plugin": "^4.0.2",
+    "@bndynet/typedoc-default-themes": "^0.5.1",
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
     "@types/classnames": "^2.2.7",
