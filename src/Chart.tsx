@@ -11,6 +11,7 @@ import {
     Bar,
     Area,
     IconType,
+    ResponsiveContainer,
 } from "recharts";
 import { Serie } from "./Serie";
 import { ChartLegendContent } from "./ChartLegendContent";
@@ -110,82 +111,84 @@ export class Chart extends React.Component<ChartProps, ChartState> {
                     height,
                 }}
             >
-                <ComposedChart data={this.state.data} width={100} height={100}>
-                    <XAxis
-                        dataKey={this.props.xKey}
-                        height={this.props.xHeight}
-                    />
-                    <YAxis
-                        width={
-                            this.state.data && this.state.data.length > 0
-                                ? this.props.yWidth
-                                : 0
-                        }
-                    />
-                    <CartesianGrid vertical={false} strokeDasharray="3 3" />
-                    {this.props.data && this.props.data.length > 0 && (
-                        <Tooltip />
-                    )}
-                    <Legend
-                        height={this.props.legendHeight || 45}
-                        iconType={this.props.legendItemIconType || "square"}
-                        onClick={this.onLegendClick}
-                        content={props => (
-                            <ChartLegendContent
-                                {...props}
-                                series={this.props.series}
-                                onItemClick={this.onLegentItemClick}
-                                classes={{
-                                    itemInactive:
-                                        classes && classes.legendItemInactive,
-                                }}
-                            />
+                <ResponsiveContainer width="100%" height="100%">
+                    <ComposedChart data={this.state.data}>
+                        <XAxis
+                            dataKey={this.props.xKey}
+                            height={this.props.xHeight}
+                        />
+                        <YAxis
+                            width={
+                                this.state.data && this.state.data.length > 0
+                                    ? this.props.yWidth
+                                    : 0
+                            }
+                        />
+                        <CartesianGrid vertical={false} strokeDasharray="3 3" />
+                        {this.props.data && this.props.data.length > 0 && (
+                            <Tooltip />
                         )}
-                    />
-                    {this.props.series &&
-                        this.props.series.map((serie, index) => {
-                            if (this.state.offSeries[serie.key]) {
-                                return;
-                            }
-                            switch (serie.type) {
-                                case "area":
-                                    return (
-                                        <Area
-                                            key={index}
-                                            type={
-                                                serie.visualizationType ||
-                                                "monotone"
-                                            }
-                                            dataKey={serie.key}
-                                            fill={serie.color}
-                                            stroke={serie.color}
-                                        />
-                                    );
-                                case "bar":
-                                    return (
-                                        <Bar
-                                            key={index}
-                                            dataKey={serie.key}
-                                            barSize={serie.width || 20}
-                                            fill={serie.color}
-                                        />
-                                    );
-                                case "line":
-                                default:
-                                    return (
-                                        <Line
-                                            key={index}
-                                            type={
-                                                serie.visualizationType ||
-                                                "monotone"
-                                            }
-                                            dataKey={serie.key}
-                                            stroke={serie.color}
-                                        />
-                                    );
-                            }
-                        })}
-                </ComposedChart>
+                        <Legend
+                            height={this.props.legendHeight || 45}
+                            iconType={this.props.legendItemIconType || "square"}
+                            onClick={this.onLegendClick}
+                            content={props => (
+                                <ChartLegendContent
+                                    {...props}
+                                    series={this.props.series}
+                                    onItemClick={this.onLegentItemClick}
+                                    classes={{
+                                        itemInactive:
+                                            classes && classes.legendItemInactive,
+                                    }}
+                                />
+                            )}
+                        />
+                        {this.props.series &&
+                            this.props.series.map((serie, index) => {
+                                if (this.state.offSeries[serie.key]) {
+                                    return;
+                                }
+                                switch (serie.type) {
+                                    case "area":
+                                        return (
+                                            <Area
+                                                key={index}
+                                                type={
+                                                    serie.visualizationType ||
+                                                    "monotone"
+                                                }
+                                                dataKey={serie.key}
+                                                fill={serie.color}
+                                                stroke={serie.color}
+                                            />
+                                        );
+                                    case "bar":
+                                        return (
+                                            <Bar
+                                                key={index}
+                                                dataKey={serie.key}
+                                                barSize={serie.width || 20}
+                                                fill={serie.color}
+                                            />
+                                        );
+                                    case "line":
+                                    default:
+                                        return (
+                                            <Line
+                                                key={index}
+                                                type={
+                                                    serie.visualizationType ||
+                                                    "monotone"
+                                                }
+                                                dataKey={serie.key}
+                                                stroke={serie.color}
+                                            />
+                                        );
+                                }
+                            })}
+                    </ComposedChart>
+                </ResponsiveContainer>
                 {this.state.loadingDataSource && this.props.loadingElement && (
                     <div
                         className={classNames(classes && classes.loadingElement)}
