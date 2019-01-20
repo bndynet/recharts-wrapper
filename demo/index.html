@@ -13,6 +13,10 @@
             .row .cell {
                 flex: 1;
             }
+            .loading {
+                background-color: rgba(0, 0, 0, 0.5);
+                color: red;
+            }
         </style>
     </head>
     <body>
@@ -23,6 +27,7 @@
             <div class="cell" id="chart1"></div>
             <div class="cell" id="chart2"></div>
             <div class="cell" id="chart3"></div>
+            <div class="cell" id="chart4"></div>
         </div>
         <script>
             const data = [
@@ -67,6 +72,31 @@
                     legendIconType: "circle",
                 },
             ] }), target("chart3"));
+
+            function loading() {
+                return "loading...";
+            }
+            ReactDOM.render(e(rechartsWrapper.Chart, {
+                data, series: [
+                    { key: "uv", color: "#82ca9d", type: "bar" },
+                    { key: "pv", color: "#8884d8", type: "line"},
+                    {
+                        key: "amt",
+                        color: "#ff0000",
+                        type: "area",
+                        legendIconType: "circle",
+                    },
+                ],
+                dataSource: new Promise(function(resolve, reject){
+                    setTimeout(function() {
+                        resolve([]);
+                    }, 5000);
+                }),
+                loadingElement: e(loading),
+                classes: {
+                    loadingElement: "loading"
+                }
+            }),target("chart4"));
         </script>
     </body>
 </html>

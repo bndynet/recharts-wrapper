@@ -97,7 +97,6 @@ export class Chart extends React.Component<ChartProps, ChartState> {
             height,
             width: "100%",
             textAlign: "center",
-            backgroundColor: "rgba(255, 255, 255, .5)",
         };
         return (
             <div
