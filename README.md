@@ -1,6 +1,9 @@
 # Recharts  Wrapper
 
+[![npm](https://img.shields.io/npm/v/@bndynet/recharts-wrapper.svg)](https://www.npmjs.com/package/@bndynet/recharts-wrapper)
+[![Build Status](https://travis-ci.com/bndynet/recharts-wrapper.svg?branch=master)](https://travis-ci.com/bndynet/recharts-wrapper)
 [![Coverage Status](https://coveralls.io/repos/github/bndynet/recharts-wrapper/badge.svg?branch=master)](https://coveralls.io/github/bndynet/recharts-wrapper?branch=master)
+[![Code Styles](https://img.shields.io/badge/Code_Style-Prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 It's just a wrapper of Recharts for easiler to code, but some enhancements.
 
