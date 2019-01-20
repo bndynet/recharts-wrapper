@@ -1,6 +1,6 @@
 import React from "react";
 import { render, mount, ReactWrapper } from "enzyme";
-import { ChartLegendContent, Serie } from "../src/recharts-wrapper";
+import { ChartLegendContent } from "../src/ChartLegendContent";
 import { chartSeries} from "./_data";
 
 describe("Comp: ChartLegendContent", () => {
