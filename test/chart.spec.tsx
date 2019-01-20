@@ -6,7 +6,6 @@ import { chartData, chartSeries } from "./_data";
 import { ChartLegendContent } from '../src/ChartLegendContent';
 
 describe("Comp: Chart", () => {
-
     it("should render ChartLegendContent", () => {
         const wrapper = shallow(<Chart
             width={500}
@@ -80,19 +79,21 @@ describe("Comp: Chart", () => {
     });
 
     it("should handle the exceptions when dataSource property specified and errors occurred", async () => {
-        const errorPromise = () => Promise.reject(undefined);
-        global.fetch = () => errorPromise;
+        const errorPromise = () => Promise.reject("error");
         const errorFn = jest.fn();
-        const wrapper = shallow(<Chart
+        shallow(<Chart
             width={500}
             data={chartData}
             xKey="name"
             series={chartSeries}
             dataSource={errorPromise}
             onDataSourceError={errorFn}
+            classes={{
+                root: "test",
+                legendItemInactive: "test",
+            }}
         />);
-        await wrapper.instance().componentDidMount();
-        // await errorPromise;
+        await errorPromise;
         setTimeout(() => {
             expect(errorFn.mock.calls.length).toBe(1);
         }, 200);
