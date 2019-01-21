@@ -44,6 +44,7 @@
     "@bndynet/header-injection-webpack-plugin": "^4.0.2",
     "@bndynet/typedoc-default-themes": "^0.5.1",
     "@commitlint/cli": "^7.1.2",
+    "@semantic-release/git": "^7.0.8",
     "@types/classnames": "^2.2.7",
     "@types/d3-shape": "^1.2.7",
     "@types/enzyme": "^3.1.15",
