@@ -1,5 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
+import randomColor from "randomcolor";
 import {
     XAxis,
     YAxis,
@@ -98,6 +99,15 @@ export class Chart extends React.Component<ChartProps, ChartState> {
             width: "100%",
             textAlign: "center",
         };
+
+        if (randomColor) {
+            this.props.series.forEach(serie => {
+                if (!serie.color) {
+                    serie.color = randomColor();
+                }
+            });
+        }
+
         return (
             <div
                 className={classNames(
