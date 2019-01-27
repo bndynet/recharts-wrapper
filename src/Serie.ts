@@ -5,14 +5,7 @@ export interface Serie {
     label?: string;
     color?: string;
     width?: number;
-    type?: "area" | "line" | "bar";
-    legendIconType?:
-        | "circle"
-        | "cross"
-        | "diamond"
-        | "square"
-        | "star"
-        | "triangle"
-        | "wye";
+    type?: "area" | "line" | "bar" | "pie";
+    legendIconType?: "circle" | "cross" | "diamond" | "square" | "star" | "triangle" | "wye";
     visualizationType?: LineType;
 }

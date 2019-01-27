@@ -20,9 +20,7 @@
         </style>
     </head>
     <body>
-        <div class="row">
-            <div class="cell" id="chart"></div>
-        </div>
+        <div class="row"><div class="cell" id="chart"></div></div>
         <div class="row">
             <div class="cell" id="chart1"></div>
             <div class="cell" id="chart2"></div>
@@ -30,73 +28,76 @@
             <div class="cell" id="chart4"></div>
         </div>
         <script>
-            const data = [
-                { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
-                { name: "Page B", uv: 3000, pv: 1398, amt: 2210 },
-                { name: "Page C", uv: 2000, pv: 9800, amt: 2290 },
-                { name: "Page D", uv: 2780, pv: 3908, amt: 2000 },
-                { name: "Page E", uv: 1890, pv: 4800, amt: 2181 },
-                { name: "Page F", uv: 2390, pv: 3800, amt: 2500 },
-                { name: "Page G", uv: 3490, pv: 4300, amt: 2100 },
-            ];
+            const data = [{ name: "Page A", uv: 4000, pv: 2400, amt: 2400 }, { name: "Page B", uv: 3000, pv: 1398, amt: 2210 }, { name: "Page C", uv: 2000, pv: 9800, amt: 2290 }, { name: "Page D", uv: 2780, pv: 3908, amt: 2000 }, { name: "Page E", uv: 1890, pv: 4800, amt: 2181 }, { name: "Page F", uv: 2390, pv: 3800, amt: 2500 }, { name: "Page G", uv: 3490, pv: 4300, amt: 2100 }];
 
             const e = React.createElement;
             const target = function(id) {
                 return document.querySelector("#" + id);
             };
-            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [
-                { key: "uv"},
-                { key: "pv"},
-                { key: "amt"},
-            ]}), target("chart"));
+            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [{ key: "uv" }, { key: "pv" }, { key: "amt" }] }), target("chart"));
 
-            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [
-                { key: "uv", color: "#82ca9d", },
-                { key: "pv", color: "#8884d8", },
-                { key: "amt", color: "#ff0000", },
-            ] }), target("chart1"));
+            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [{ key: "uv", color: "#82ca9d" }, { key: "pv", color: "#8884d8" }, { key: "amt", color: "#ff0000" }] }), target("chart1"));
 
-            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [
-                { key: "uv", color: "#82ca9d", type: "bar" },
-                { key: "pv", color: "#8884d8", type: "bar" },
-                { key: "amt", color: "#ff0000", type: "bar", },
-            ] }), target("chart2"));
+            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [{ key: "uv", color: "#82ca9d", type: "bar" }, { key: "pv", color: "#8884d8", type: "bar" }, { key: "amt", color: "#ff0000", type: "bar" }] }), target("chart2"));
 
-            ReactDOM.render(e(rechartsWrapper.Chart, { data, series: [
-                { key: "uv", color: "#82ca9d", type: "bar" },
-                { key: "pv", color: "#8884d8", type: "line"},
-                {
-                    key: "amt",
-                    color: "#ff0000",
-                    type: "area",
-                    legendIconType: "circle",
-                },
-            ] }), target("chart3"));
+            ReactDOM.render(
+                e(rechartsWrapper.Chart, {
+                    data,
+                    series: [
+                        { key: "uv", color: "#82ca9d", type: "bar" },
+                        { key: "pv", color: "#8884d8", type: "line" },
+                        {
+                            key: "amt",
+                            color: "#ff0000",
+                            type: "area",
+                            legendIconType: "circle",
+                        },
+                    ],
+                }),
+                target("chart3"),
+            );
 
             function loading() {
                 return "loading...";
             }
-            ReactDOM.render(e(rechartsWrapper.Chart, {
-                data, series: [
-                    { key: "uv", color: "#82ca9d", type: "bar" },
-                    { key: "pv", color: "#8884d8", type: "line"},
-                    {
-                        key: "amt",
-                        color: "#ff0000",
-                        type: "area",
-                        legendIconType: "circle",
+            ReactDOM.render(
+                e(rechartsWrapper.Chart, {
+                    data,
+                    series: [
+                        { key: "uv", color: "#82ca9d", type: "bar" },
+                        { key: "pv", color: "#8884d8", type: "line" },
+                        {
+                            key: "amt",
+                            color: "#ff0000",
+                            type: "area",
+                            legendIconType: "circle",
+                        },
+                    ],
+                    dataSource: new Promise(function(resolve, reject) {
+                        setTimeout(function() {
+                            resolve([]);
+                        }, 5000);
+                    }),
+                    loadingElement: e(loading),
+                    classes: {
+                        loadingElement: "loading",
                     },
-                ],
-                dataSource: new Promise(function(resolve, reject){
-                    setTimeout(function() {
-                        resolve([]);
-                    }, 5000);
                 }),
-                loadingElement: e(loading),
-                classes: {
-                    loadingElement: "loading"
-                }
-            }),target("chart4"));
+                target("chart4"),
+            );
+        </script>
+
+        <hr />
+        <div class="row">
+            <div id="piechart1"></div>
+            <div id="piechart2"></div>
+            <div id="piechart3"></div>
+            <div id="piechart4"></div>
+        </div>
+        <script>
+            const pieData = [[{ name: "Group A", value: 400 }, { name: "Group B", value: 300 }, { name: "Group C", value: 300 }, { name: "Group D", value: 200 }], [{ name: "A1", value: 100 }, { name: "A2", value: 300 }, { name: "B1", value: 100 }, { name: "B2", value: 80 }, { name: "B3", value: 40 }, { name: "B4", value: 30 }, { name: "B5", value: 50 }, { name: "C1", value: 100 }, { name: "C2", value: 200 }, { name: "D1", value: 150 }, { name: "D2", value: 50 }]];
+            ReactDOM.render(e(rechartsWrapper.Chart, { data: pieData, type: "pie", series: [{ key: "value"}, { key: "value" }] }), target("piechart1"));
+            ReactDOM.render(e(rechartsWrapper.Chart, { data: pieData.splice(0, 1), type: "pie", series: [{ key: "value", color: "#ff0000"}, { key: "value" }] }), target("piechart2"));
         </script>
     </body>
 </html>
