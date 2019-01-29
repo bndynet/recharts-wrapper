@@ -31,7 +31,7 @@ const data = [
     { name: "Page G", uv: 3490, pv: 4300, amt: 2100 }
 ];
 
-const series: ISerie[] = [
+const series: Serie[] = [
     { key: "uv", type: "bar" },
     { key: "pv", color: "#8884d8", type: "area" },
     { key: "amt", color: "#ff0000", type: "line", legendIconType: "circle" }
