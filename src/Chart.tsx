@@ -14,8 +14,8 @@ export interface ChartProps {
     className?: string;
     type?: "area" | "line" | "bar" | "pie";
     data: any[];
-    xKey: string;
     series: Serie[];
+    xKey?: string;
     width?: number | string;
     height?: number | string;
     xHeight?: number;

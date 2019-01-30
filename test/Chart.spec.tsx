@@ -1,6 +1,6 @@
 import React from "react";
-import { shallow } from "enzyme";
-import { Legend } from "recharts";
+import { shallow, mount } from "enzyme";
+import { Legend, PieChart, Cell, Pie } from "recharts";
 import { Chart } from "../src/Chart";
 import { chartData, chartSeries } from "./_data";
 import { ChartLegendContent } from '../src/ChartLegendContent';
@@ -98,4 +98,32 @@ describe("Comp: Chart", () => {
             expect(errorFn.mock.calls.length).toBe(1);
         }, 200);
     });
+
+    it("should render a pie chart with one circle", () => {
+        const data = [[{ name: "A1", value: 100 },]];
+        const series = [{ key: "value" }];
+        const wrapper = shallow(<Chart
+            width={500}
+            type="pie"
+            data={data}
+            series={series}
+        />);
+        expect(wrapper.find(Pie).length).toBe(1);
+    });
+
+    it("should render a pie chart with two circle", () => {
+        const data = [[{ name: "Group A", value: 400 }, { name: "Group B", value: 300 }, { name: "Group C", value: 300 }, { name: "Group D", value: 200 }], [{ name: "A1", value: 100 }, { name: "A2", value: 300 }, { name: "B1", value: 100 }, { name: "B2", value: 80 }, { name: "B3", value: 40 }, { name: "B4", value: 30 }, { name: "B5", value: 50 }, { name: "C1", value: 100 }, { name: "C2", value: 200 }, { name: "D1", value: 150 }, { name: "D2", value: 50 }]];
+        const series = [{ key: "value", color: "#ff0000"}, { key: "value" }];
+        const wrapper = shallow(<Chart
+            width={500}
+            type="pie"
+            data={data}
+            series={series}
+        />);
+        const Label = wrapper.find(Pie).first().prop("label");
+        const props = wrapper.find(Pie).first().props();
+        expect(shallow(<Label {...props}/>).instance).not.toBe(null);
+        expect(wrapper.find(Pie).length).toBe(2);
+    });
+
 });
