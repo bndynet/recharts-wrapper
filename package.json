@@ -1,6 +1,6 @@
 {
   "name": "@bndynet/recharts-wrapper",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A Recharts wrapper for easiler to code",
   "main": "dist/recharts-wrapper.umd.js",
   "module": "dist/recharts-wrapper.es5.js",
